@@ -1,0 +1,10 @@
+# movement cards
+- move n steps
+- move n steps in a direction
+- move in a direction till a wall
+- move to an ore
+- move to the nearest ore
+
+# action cards
+- mine ore nearby
+- mine distant ore in a line (mining laser)

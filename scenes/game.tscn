@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://caitwa4qdhp20"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_cpsyj"]
+[ext_resource type="PackedScene" uid="uid://bffj7kqbl57si" path="res://scenes/level.tscn" id="1_mnq34"]
+[ext_resource type="Script" path="res://ui_grid.gd" id="2_sp3jt"]
+[ext_resource type="PackedScene" uid="uid://sjk1d2hu4fq2" path="res://scenes/character.tscn" id="2_xtmu4"]
+[ext_resource type="Texture2D" uid="uid://cip5qkvbhrhq0" path="res://assets/cursor.png" id="4_rg7tj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2pr0"]
+atlas = ExtResource("4_rg7tj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6w2n"]
+atlas = ExtResource("4_rg7tj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72slb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2pr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6w2n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[node name="game" type="Node2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+script = ExtResource("1_cpsyj")
+
+[node name="level" parent="." instance=ExtResource("1_mnq34")]
+
+[node name="ui_grid" type="Node2D" parent="."]
+position = Vector2(56, 56)
+script = ExtResource("2_sp3jt")
+
+[node name="Node2D" type="AnimatedSprite2D" parent="ui_grid"]
+sprite_frames = SubResource("SpriteFrames_72slb")
+autoplay = "default"
+frame_progress = 0.303909
+offset = Vector2(8, 8)
+
+[node name="character" parent="." instance=ExtResource("2_xtmu4")]
+position = Vector2(5.75, 5.75)
